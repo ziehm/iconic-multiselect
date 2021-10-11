@@ -277,7 +277,7 @@ var IconicMultiSelect = function () {
           var el = this._domElements.options.list[i];
           var text = this._itemTemplate ? this._data[i][this._textField] : el.textContent;
 
-          myReg = new RegExp("^.*" + valueLowerCase + ".*$");
+          var myReg = new RegExp("^.*" + valueLowerCase + ".*$");
           if(text.toLowerCase().match(myReg) === null) {
             el.parentNode && el.parentNode.removeChild(el);
 		      } else {
