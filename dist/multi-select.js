@@ -277,11 +277,18 @@ var IconicMultiSelect = function () {
           var el = this._domElements.options.list[i];
           var text = this._itemTemplate ? this._data[i][this._textField] : el.textContent;
 
-          if (text.toLowerCase().substring(0, valueLowerCase.length) === valueLowerCase) {
+          myReg = new RegExp("^.*" + valueLowerCase + ".*$")
+          if(text.toLowerCase().match(myReg) === null) {
+            el.parentNode && el.parentNode.removeChild(el);
+		      } else {
+            this._domElements.optionsContainerList.appendChild(el);
+		      }
+
+          /*if (text.toLowerCase().substring(0, valueLowerCase.length) === valueLowerCase) {
             this._domElements.optionsContainerList.appendChild(el);
           } else {
             el.parentNode && el.parentNode.removeChild(el);
-          }
+          }*/
         }
 
         var hasResults = this._domElements.options.some(function (el, index) {
